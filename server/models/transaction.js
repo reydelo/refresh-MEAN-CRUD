@@ -10,5 +10,6 @@ var Transaction = new Schema(
   }
 );
 
-mongoose.model('transactions', Transaction);
-mongoose.connect('mongodb://localhost/refresh-MEAN-CRUD');
+mongoose.connect(process.env.MONGO_URI);
+
+module.exports = mongoose.model('transactions', Transaction);
