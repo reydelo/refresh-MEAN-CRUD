@@ -8,11 +8,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var swig = require('swig');
-require('./models/transaction');
 
 // *** routes *** //
-var routes = require('./routes/index');
-var api = require('./routes/api');
+var apiRoutes = require('./routes/api');
 
 // *** express instance *** //
 var app = express();
@@ -34,7 +32,7 @@ app.use(express.static(path.join(__dirname, '../client/public')));
 
 // *** main routes *** //
 app.use('/', routes);
-app.use('/api', api);
+app.use('/api/v1/', apiRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
